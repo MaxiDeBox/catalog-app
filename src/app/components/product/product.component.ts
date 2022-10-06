@@ -8,11 +8,14 @@ import {IProduct} from "../../models/products.interface";
 })
 export class ProductComponent implements OnInit {
   @Input() product: IProduct;
-
+  details = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showDetail() {
+    this.details = !this.details;
+  }
 }
