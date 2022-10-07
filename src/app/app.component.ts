@@ -4,6 +4,7 @@ import { products as data } from "./data/products"
 import {ProductsService} from "./services/products.service";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
+import {ModalService} from "./services/modal.service";
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,16 @@ import {tap} from "rxjs/operators";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'Catalog-app';
+  title = 'catalog-app';
 
-  // products: IProduct[] = [];
   products$: Observable<IProduct[]>;
   loading = false;
+  term=''
 
-  constructor(private _productsSrv: ProductsService) {}
+  constructor(
+    public modalSrv: ModalService,
+    private _productsSrv: ProductsService
+  ) {}
 
   ngOnInit() {
     this.loading = true;
